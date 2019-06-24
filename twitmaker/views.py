@@ -1,5 +1,5 @@
 from django.http import HttpResponseRedirect, JsonResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from twitmaker.models import Tweet
 from twitmaker.forms import TweetForm
 import json
@@ -23,3 +23,12 @@ def create_tweet(request):
     else:
         context = {'tweets': Tweet.objects.all(), 'form': form}
         return render(request, 'index.html', context)
+
+def tweet_delete(request, id):
+    tweet = Tweet.objects.get(pk=id)
+    tweet.delete()
+    data = {
+        'status' : True
+    }
+    # return JsonResponse(data)
+    return redirect('/')

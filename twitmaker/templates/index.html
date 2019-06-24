@@ -5,6 +5,7 @@
       <li class='tweet'>
         <time> {{ tweet.created_at }} </time>
         <p> {{ tweet.message }} </p>
+        <a href="{% url 'delete_tweet' id=tweet.pk %}" class="delete-button">Delete</a>
       </li>
     {% endfor %}
   </ol>

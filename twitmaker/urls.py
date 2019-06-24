@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='home'),
     path('tweets/', views.create_tweet, name='create_tweet'),
+    path('tweets/<int:id>/delete', views.tweet_delete, name='delete_tweet'),
 ]
