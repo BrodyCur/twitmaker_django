@@ -16,7 +16,8 @@ document.addEventListener('DOMContentLoaded', function() {
       tweetMessage.innerText = response.data.message;
 
       const  tweetTime = document.createElement('time');
-      tweetTime.innerText = response.headers.date;
+      const dateFormat = response.headers.date;
+      tweetTime.innerText = dateFormat;
 
       newTweetLi.append(tweetTime);
       newTweetLi.append(tweetMessage);
