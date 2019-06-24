@@ -8,6 +8,21 @@ document.addEventListener('DOMContentLoaded', function() {
       formData,
     ).then(function(response) {
       console.log(response);
+      const tweets = document.querySelector('.tweets');
+      const newTweetLi = document.createElement('li');
+      newTweetLi.className = 'tweet';
+
+      const tweetMessage = document.createElement('p');
+      tweetMessage.innerText = response.data.message;
+
+      const  tweetTime = document.createElement('time');
+      tweetTime.innerText = response.headers.date;
+
+      newTweetLi.append(tweetTime);
+      newTweetLi.append(tweetMessage);
+      tweets.append(newTweetLi);
+
+      document.querySelector('textarea[name=message]').value = '';
     }).catch(function(error) {
       console.log(error);
     });
